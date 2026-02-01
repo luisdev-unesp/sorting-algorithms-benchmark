@@ -1,36 +1,37 @@
 # ==============================================================================
-# Variáveis de Configuração para Sorting Benchmark
+# Configuração para Sorting Benchmark - UNESP
 # ==============================================================================
 
 CC = gcc
+# O -I include avisa ao GCC para buscar o sorts.h na pasta include
 CFLAGS = -Wall -Wextra -g -I include
 
-# Nome do executável final para este projeto
+# Nome do executável
 EXEC = sorter
 
-# Arquivos fonte (dentro da pasta src)
-# Adicione aqui todos os nomes dos seus arquivos .c desse projeto
-SRC = src/main.c src/ordenacao.c 
+# Caminhos dos arquivos fonte na pasta src
+SRC = src/main.c src/sorts.c
 
-# Gera a lista de arquivos objeto (.o) automaticamente
+# Gera os nomes dos arquivos objeto (.o) automaticamente dentro de src/
 OBJ = $(SRC:.c=.o)
 
 # ==============================================================================
-# Regras de Compilação
+# Regras
 # ==============================================================================
 
 all: $(EXEC)
 
+# Linkagem final do executável
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
 	@echo "Executável '$(EXEC)' criado com sucesso!"
 
-# Regra genérica para transformar .c em .o considerando a pasta src
+# Regra para compilar os arquivos .c em .o
 src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Limpeza dos arquivos temporários
 clean:
-	@echo "Limpando arquivos objeto e executável..."
 	rm -f $(OBJ) $(EXEC)
 
 .PHONY: all clean
