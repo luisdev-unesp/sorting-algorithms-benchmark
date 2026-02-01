@@ -48,11 +48,9 @@ Seguindo os padrões de desenvolvimento de software, o projeto está organizado 
     1. Clone o repositório.
 
     2. Compile o projeto utilizando o Makefile:
-    '''bash
     make
 
     3. Execute o programa de benchmark:
-    '''bash
     ./sorter
 
 💻 Especificações do Sistema
